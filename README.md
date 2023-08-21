@@ -47,7 +47,6 @@ spring.jpa.properties.hibernate.format_sql=true
 app.jwtSecret=jwtKey
 app.jwtAccessExpirationInMs=accessTokenExpirationTime
 app.jwtRefreshExpirationInMs=refreshTokenExpirationTime
-Run the application.
 ```
 #### 3. Run application
 
