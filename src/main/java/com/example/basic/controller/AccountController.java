@@ -18,6 +18,6 @@ public class AccountController {
 
   @GetMapping("/test")
   public ResponseDto test(@RequestBody Map<String, Object> param) {
-    return ResponseUtil.SUCCESS(ResponseCode.ACCOUNT_SIGN_IN_SUCCESS, param);
+    return ResponseUtil.SUCCESS(ResponseCode.REQUEST_SUCCESS, param);
   }
 }

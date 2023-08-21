@@ -12,6 +12,7 @@ public enum ResponseCode {
   REQUEST_DATA_LENGTH_INVALID(500, "[ $ ] 유효하지 않은 길이입니다."),
   REQUEST_DATA_ERROR(500, "유효하지 않은 값입니다."),
 
+  REQUEST_SUCCESS(200, "Success"),
   ACCESS_DENIED(403, "Invalid JWT signature");
 
   private final int status;
