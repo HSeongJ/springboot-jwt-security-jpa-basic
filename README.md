@@ -52,9 +52,9 @@ app.jwtRefreshExpirationInMs=refreshTokenExpirationTime
 
 
 ## Usage
-After running the project, use a web browser or an API client to send a POST request to http://localhost:8080/auth/signup in order to register a new user.
+After running the project, use a web browser or an API client to send a POST request to http://localhost:8080/auth/signUp in order to register a new user.
 
-To log in as a registered user, send a POST request to http://localhost:8080/auth/signin to obtain a JWT token.
+To log in as a registered user, send a POST request to http://localhost:8080/auth/signIn to obtain a JWT token.
 
 Use the obtained JWT token to access protected endpoints. Include the token in the Authorization header as Bearer {token} in your requests.
 
@@ -120,9 +120,9 @@ app.jwtRefreshExpirationInMs: refreshTokenExpirationTime
 
 
 ## 사용법
-프로젝트를 실행한 후, 브라우저나 API 클라이언트를 사용하여 http://localhost:8080/auth/signup 로 POST 요청을 보내어 새로운 사용자를 등록합니다.
+프로젝트를 실행한 후, 브라우저나 API 클라이언트를 사용하여 http://localhost:8080/auth/signUp 로 POST 요청을 보내어 새로운 사용자를 등록합니다.
 
-등록한 사용자로 로그인을 하기 위해 http://localhost:8080/auth/signin 로 POST 요청을 보내어 JWT 토큰을 획득합니다.
+등록한 사용자로 로그인을 하기 위해 http://localhost:8080/auth/signIn 로 POST 요청을 보내어 JWT 토큰을 획득합니다.
 
 얻은 JWT 토큰을 사용하여 보호된 엔드포인트에 접근할 수 있습니다. Header에 Authorization: Bearer {획득한 토큰}을 포함하여 요청을 보냅니다.
 
