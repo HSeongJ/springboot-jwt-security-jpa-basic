@@ -35,8 +35,8 @@ git clone https://github.com/HSeongJ/springboot-jwt-security-jpa-basic
 
 #### 2. Open the application.properties file and configure the database information.
 ```
-spring.datasource.driverClassName=org.mariadb.jdbc.Driver
-spring.datasource.url=jdbc:mariadb://localhost:3306/dbname
+spring.datasource.driverClassName=datasource-driver
+spring.datasource.url=datasource=url
 spring.datasource.username=dbusername
 spring.datasource.password=dbpassword
 
@@ -102,20 +102,20 @@ git clone https://github.com/HSeongJ/springboot-jwt-security-jpa-basic
 ```
 
 #### 2. application.properties 파일을 열고 데이터베이스 정보를 설정합니다.
+```
+spring.datasource.driverClassName=datasource-driver
+spring.datasource.url=datasource=url
+spring.datasource.username=dbusername
+spring.datasource.password=dbpassword
 
-    spring.datasource.driverClassName=org.mariadb.jdbc.Driver
-    spring.datasource.url=jdbc:mariadb://localhost:3306/dbname
-    spring.datasource.username=dbusername
-    spring.datasource.password=dbpassword
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
 
-    spring.jpa.hibernate.ddl-auto=update
-    spring.jpa.show-sql=true
-    spring.jpa.properties.hibernate.format_sql=true
-
-    app.jwtSecret: jwtKey
-    app.jwtAccessExpirationInMs: accessTokenExpirationTime
-    app.jwtRefreshExpirationInMs: refreshTokenExpirationTime
-
+app.jwtSecret: jwtKey
+app.jwtAccessExpirationInMs: accessTokenExpirationTime
+app.jwtRefreshExpirationInMs: refreshTokenExpirationTime
+```
 #### 3. 애플리케이션을 실행합니다.
 
 
