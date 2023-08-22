@@ -13,6 +13,9 @@ public enum ResponseCode {
   REQUEST_DATA_ERROR(500, "유효하지 않은 값입니다."),
 
   REQUEST_SUCCESS(200, "Success"),
+
+  JWT_ACCESS_TOKEN_GENERATE_SUCCESS(200, "JWT 토큰 생성에 성공했습니다."),
+  JWT_ACCESS_TOKEN_GENERATE_FAIL(500, "JWT 토큰 생성에 실패했습니다."),
   ACCESS_DENIED(403, "Invalid JWT signature");
 
   private final int status;

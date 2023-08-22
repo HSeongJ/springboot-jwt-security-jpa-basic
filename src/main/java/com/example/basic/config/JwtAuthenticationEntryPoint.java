@@ -15,15 +15,15 @@ import java.io.IOException;
 @Log4j2
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
-    @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)
-            throws IOException, ServletException {
-        log.error("Responding with unauthorized error. Message - {}", authException.getMessage());
-        response.setContentType("application/json;charset=UTF-8");
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+  @Override
+  public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)
+      throws IOException, ServletException {
+    log.error("Responding with unauthorized error. Message - {}", authException.getMessage());
+    response.setContentType("application/json;charset=UTF-8");
+    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
         // write denied msg
-        response.getWriter()
-          .println(ResponseUtil.getErrorResponseJson(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage()));
+    response.getWriter()
+      .println(ResponseUtil.getErrorResponseJson(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage()));
     }
 }

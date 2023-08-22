@@ -9,7 +9,7 @@ import com.example.basic.entity.account.AccountEntity;
 import com.example.basic.entity.account.AccountRole;
 import com.example.basic.exception.CustomException;
 import com.example.basic.repository.AccountRepository;
-import com.example.basic.service.AccountService;
+import com.example.basic.service.AuthService;
 import com.example.basic.util.ResponseCode;
 import com.example.basic.util.ResponseUtil;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AccountServiceImpl implements AccountService {
+public class AuthServiceImpl implements AuthService {
 
   private final AccountRepository accountRepository;
   private final AuthenticationManagerBuilder authenticationManagerBuilder;
@@ -59,6 +59,16 @@ public class AccountServiceImpl implements AccountService {
       return ResponseUtil.SUCCESS(ResponseCode.ACCOUNT_SIGN_IN_SUCCESS, jwt);
     } catch (Exception e) {
       return ResponseUtil.ERROR(ResponseCode.ACCOUNT_SIGN_IN_FAIL);
+    }
+  }
+
+  @Override
+  public ResponseDto generateAccessToken(String token) {
+    try {
+      TokenInfoDto tokenInfoDto = jwtTokenProvider.generateAccessToken(token);
+      return ResponseUtil.SUCCESS(ResponseCode.JWT_ACCESS_TOKEN_GENERATE_SUCCESS, tokenInfoDto);
+    } catch (Exception e) {
+      return ResponseUtil.ERROR(ResponseCode.JWT_ACCESS_TOKEN_GENERATE_FAIL);
     }
   }
 }

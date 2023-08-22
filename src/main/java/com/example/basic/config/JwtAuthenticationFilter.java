@@ -20,29 +20,29 @@ import java.io.IOException;
 @Log4j2
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private final JwtTokenProvider tokenProvider;
+  private final JwtTokenProvider tokenProvider;
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        try {
-            String jwt = getJwtFromRequest(request);
+  @Override
+  protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    try {
+      String jwt = getJwtFromRequest(request);
 
-            if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
-                Authentication authentication = tokenProvider.getAuthentication(jwt);
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            }
-        } catch (Exception e) {
-            throw new JwtException(e.getMessage());
-        }
-
-        filterChain.doFilter(request, response);
+      if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
+        Authentication authentication = tokenProvider.getAuthentication(jwt);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+      }
+    } catch (Exception e) {
+      throw new JwtException(e.getMessage());
     }
 
-    private String getJwtFromRequest(HttpServletRequest request) {
-        String bearerToken = request.getHeader("Authorization");
-        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
-            return bearerToken.substring(7, bearerToken.length());
-        }
-        return null;
+    filterChain.doFilter(request, response);
+  }
+
+  private String getJwtFromRequest(HttpServletRequest request) {
+    String bearerToken = request.getHeader("Authorization");
+    if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
+      return bearerToken.substring(7, bearerToken.length());
     }
+    return null;
+  }
 }

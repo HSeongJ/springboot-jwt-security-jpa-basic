@@ -21,27 +21,27 @@ import java.util.Map;
 @Log4j2
 public class JwtExceptionFilter extends OncePerRequestFilter {
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        try {
-            filterChain.doFilter(request, response);
-        } catch (JwtException e) {
-            log.info("JwtExceptionFilter : " + e.getMessage());
-            response.setContentType("application/json;charset=UTF-8");
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+  @Override
+  protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    try {
+      filterChain.doFilter(request, response);
+    } catch (JwtException e) {
+      log.info("JwtExceptionFilter : " + e.getMessage());
+      response.setContentType("application/json;charset=UTF-8");
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
             // write denied msg
-            response.getWriter()
-              .println(ResponseUtil.getErrorResponseJson(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage()));
-        }
+      response.getWriter()
+        .println(ResponseUtil.getErrorResponseJson(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage()));
     }
+  }
 
-    public void setErrorResponse(HttpStatus status, HttpServletResponse response, Throwable e) throws IOException {
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        ObjectMapper mapper = new ObjectMapper();
-        Map<String, String> map = new HashMap<>();
-        map.put("timestamp", LocalDateTime.now().toString());
-        map.put("message", e.getMessage());
-        response.getWriter().write(mapper.writeValueAsString(map));
-    }
+  public void setErrorResponse(HttpStatus status, HttpServletResponse response, Throwable e) throws IOException {
+    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+    ObjectMapper mapper = new ObjectMapper();
+    Map<String, String> map = new HashMap<>();
+    map.put("timestamp", LocalDateTime.now().toString());
+    map.put("message", e.getMessage());
+    response.getWriter().write(mapper.writeValueAsString(map));
+  }
 }
