@@ -2,20 +2,20 @@ package com.example.basic.util;
 
 public enum ResponseCode {
 
-  ACCOUNT_SIGN_UP_SUCCESS(200, "회원가입에 성공했습니다."),
+  ACCOUNT_SIGN_UP_SUCCESS(200, "Sign up success"),
 
-  ACCOUNT_SIGN_UP_FAIL(500, "회원가입에 실패했습니다."),
-  ACCOUNT_SIGN_IN_SUCCESS(200, "로그인에 성공했습니다."),
-  ACCOUNT_SIGN_IN_FAIL(500, "로그인에 실패했습니다."),
+  ACCOUNT_SIGN_UP_FAIL(500, "Sign up fail"),
+  ACCOUNT_SIGN_IN_SUCCESS(200, "Sign in success"),
+  ACCOUNT_SIGN_IN_FAIL(500, "Sign in fail"),
 
-  REQUIRE_DATA_NULL(500, "[ $ ] 필수 입력값입니다."),
-  REQUEST_DATA_LENGTH_INVALID(500, "[ $ ] 유효하지 않은 길이입니다."),
-  REQUEST_DATA_ERROR(500, "유효하지 않은 값입니다."),
+  REQUIRE_DATA_NULL(500, "[ $ ] are require values"),
+  REQUEST_DATA_LENGTH_INVALID(500, "[ $ ] are invalided length"),
+  REQUEST_DATA_ERROR(500, "Invalid data"),
 
   REQUEST_SUCCESS(200, "Success"),
 
-  JWT_ACCESS_TOKEN_GENERATE_SUCCESS(200, "JWT 토큰 생성에 성공했습니다."),
-  JWT_ACCESS_TOKEN_GENERATE_FAIL(500, "JWT 토큰 생성에 실패했습니다."),
+  JWT_ACCESS_TOKEN_GENERATE_SUCCESS(200, "Generate access token success"),
+  JWT_ACCESS_TOKEN_GENERATE_FAIL(500, "Generate access token fail"),
   ACCESS_DENIED(403, "Invalid JWT signature");
 
   private final int status;
